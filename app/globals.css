@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --dark1: #060606;
+    --dark2: #181818;
+    --dark3: #232323;
+
+    --title: #FFFFFF;
+    --text: #A3A3A3;
+
+    --brand: #5FC5FF;
+}
+
+body {
+    background-color: var(--dark1);
+    color: var(--text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--title);
+}
