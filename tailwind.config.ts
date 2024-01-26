@@ -18,6 +18,14 @@ const config = {
       },
     },
     extend: {
+      colors: {
+        'background': 'var(--bg-1)',
+        'bg-2': 'var(--bg-2)',
+        'bg-3': 'var(--bg-3)',
+        'title': 'var(--title)',
+        'text': 'var(--text)',
+        'brand': 'var(--brand)',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

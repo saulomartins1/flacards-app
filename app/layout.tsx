@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { BlurDetail } from "./assets/BlurDetail";
 import { Header } from "./components/Header";
+import { ThemeProvider } from "@/app/components/theme-provider"
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,11 +19,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.className} overflow-hidden`}>
-        <Header />
-        <span className="pointer-events-none absolute -left-32 -top-48"><BlurDetail /></span>
-        <span className="pointer-events-none absolute -right-64 -bottom-64"><BlurDetail /></span>
-        {children}
+      <body className={`relative ${inter.className} overflow-hidden`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <span className="pointer-events-none absolute -left-32 -top-48"><BlurDetail /></span>
+          <span className="pointer-events-none absolute -right-64 -bottom-64"><BlurDetail /></span>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
