@@ -11,12 +11,13 @@ import {
 import { Input } from "@/app/components/ui/input"
 import { Label } from "@/app/components/ui/label"
 import { Button } from '@/app/components/ui/button'
+import { LoginWithGithub } from './authComponents/LoginWithGithub'
 
 export function Hero() {
     return (
         <section className='flex flex-col  items-center'>
             <div className='flex flex-col items-center gap-4'>
-                <Tabs defaultValue="registrar" className="w-[400px] border shadow-xl rounded-md overflow-hidden">
+                <Tabs defaultValue="registrar" className="w-[400px] rounded-md">
                     <TabsList className="grid w-full grid-cols-2">
                         <TabsTrigger value="registrar">Registrar-se</TabsTrigger>
                         <TabsTrigger value="entrar">Entrar</TabsTrigger>
@@ -31,12 +32,12 @@ export function Hero() {
                             </CardHeader>
                             <CardContent className="space-y-2">
                                 <div className="space-y-1">
-                                    <Label htmlFor="name">Name</Label>
-                                    <Input id="name" defaultValue="Pedro Duarte" />
+                                    <Label htmlFor="name">E-mail</Label>
+                                    <Input id="name" placeholder="exemplo@gmail.com" />
                                 </div>
                                 <div className="space-y-1">
-                                    <Label htmlFor="username">Username</Label>
-                                    <Input id="username" defaultValue="@peduarte" />
+                                    <Label htmlFor="username">Senha</Label>
+                                    <Input id="username" type="password" placeholder='******' />
                                 </div>
                             </CardContent>
                             <CardFooter>
@@ -54,12 +55,12 @@ export function Hero() {
                             </CardHeader>
                             <CardContent className="space-y-2">
                                 <div className="space-y-1">
-                                    <Label htmlFor="current">Current password</Label>
-                                    <Input id="current" type="password" />
+                                    <Label htmlFor="name">E-mail</Label>
+                                    <Input id="name" placeholder="exemplo@gmail.com" />
                                 </div>
                                 <div className="space-y-1">
-                                    <Label htmlFor="new">New password</Label>
-                                    <Input id="new" type="password" />
+                                    <Label htmlFor="username">Senha</Label>
+                                    <Input id="username" type="password" placeholder='******' />
                                 </div>
                             </CardContent>
                             <CardFooter>
@@ -69,8 +70,7 @@ export function Hero() {
                     </TabsContent>
                 </Tabs>
 
-                {/* <Button className='max-w-max'>Criar conta</Button>
-                <p>Já possui uma conta? <span className=' font-bold'><Link href="/entrar">Entrar</Link></span></p> */}
+                <LoginWithGithub />
             </div>
         </section>
     )

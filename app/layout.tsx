@@ -27,8 +27,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <span className="pointer-events-none absolute -left-32 -top-48"><BlurDetail /></span>
-          <span className="pointer-events-none absolute -right-64 -bottom-64"><BlurDetail /></span>
+          <span className="-z-10 pointer-events-none absolute -left-32 -top-48"><BlurDetail /></span>
+          <span className="-z-10 pointer-events-none absolute -right-64 -bottom-64"><BlurDetail /></span>
           {children}
         </ThemeProvider>
       </body>
