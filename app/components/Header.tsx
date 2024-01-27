@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 import { Logo } from '../assets/Logo'
 import { getUserSession } from '../lib/supabase/actions'
@@ -10,7 +11,9 @@ export async function Header() {
 
     return (
         <header className='flex items-center justify-around py-8 dark:bg-transparent'>
-            <Logo />
+            <Link href="/">
+                <Logo />
+            </Link>
             {session && <div>
                 <p>Logged in {session.user.email} </p>
                 <SignOut />
