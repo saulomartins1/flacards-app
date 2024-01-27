@@ -1,78 +1,28 @@
 import React from 'react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/components/ui/tabs'
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/app/components/ui/card"
-import { Input } from "@/app/components/ui/input"
-import { Label } from "@/app/components/ui/label"
-import { Button } from '@/app/components/ui/button'
+import { Tabs, TabsContent } from '@/app/components/ui/tabs'
+import { Card } from "@/app/components/ui/card"
+
 import { LoginWithGithub } from '@/app/components/authComponents/LoginWithGithub'
 import { redirect } from 'next/navigation'
 import { getUserSession } from '@/app/lib/supabase/actions'
+import { FormSignIn } from './FormSignIn'
 
 async function page() {
 
     const { data: { user } } = await getUserSession()
-
     if (user) redirect("/conta")
 
 
-    return <section className='flex flex-col  items-center'>
+    return <section className='h-screen mt-16 flex flex-col items-center gap-8'>
+        <div>
+            <h1 className='text-3xl text-center font-bold uppercase'>Acesse sua conta</h1>
+            <p>Você receberá um e-mail com um link de acesso para sua conta!</p>
+        </div>
         <div className='flex flex-col items-center gap-4'>
-            <Tabs defaultValue="registrar" className="w-[400px] rounded-md">
-                <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="registrar">Registrar-se</TabsTrigger>
-                    <TabsTrigger value="entrar">Entrar</TabsTrigger>
-                </TabsList>
-                <TabsContent value="registrar">
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Crie sua conta</CardTitle>
-                            <CardDescription>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit, ipsum.
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-2">
-                            <div className="space-y-1">
-                                <Label htmlFor="name">E-mail</Label>
-                                <Input id="name" placeholder="exemplo@gmail.com" />
-                            </div>
-                            <div className="space-y-1">
-                                <Label htmlFor="username">Senha</Label>
-                                <Input id="username" type="password" placeholder='******' />
-                            </div>
-                        </CardContent>
-                        <CardFooter>
-                            <Button>Registrar</Button>
-                        </CardFooter>
-                    </Card>
-                </TabsContent>
-                <TabsContent value="entrar">
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Acessar conta</CardTitle>
-                            <CardDescription>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit, ipsum.
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-2">
-                            <div className="space-y-1">
-                                <Label htmlFor="name">E-mail</Label>
-                                <Input id="name" placeholder="exemplo@gmail.com" />
-                            </div>
-                            <div className="space-y-1">
-                                <Label htmlFor="username">Senha</Label>
-                                <Input id="username" type="password" placeholder='******' />
-                            </div>
-                        </CardContent>
-                        <CardFooter>
-                            <Button>Entrar</Button>
-                        </CardFooter>
+            <Tabs defaultValue="access" className="w-[400px] rounded-md">
+                <TabsContent value="access">
+                    <Card className='p-5'>
+                        <FormSignIn />
                     </Card>
                 </TabsContent>
             </Tabs>
