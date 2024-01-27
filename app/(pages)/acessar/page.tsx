@@ -17,8 +17,9 @@ import { getUserSession } from '@/app/lib/supabase/actions'
 
 async function page() {
 
-    const { data: { session } } = await getUserSession()
-    if (session?.user) redirect("/conta")
+    const { data: { user } } = await getUserSession()
+
+    if (user) redirect("/conta")
 
 
     return <section className='flex flex-col  items-center'>

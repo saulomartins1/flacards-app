@@ -4,6 +4,14 @@ import React from 'react'
 import { Button } from './ui/button'
 
 export function Hero() {
+
+    /* 
+    1. Verificar a melhor forma de fazer proteção de rotas:
+    ...Matcher do middleware ou verificando e redirecionando em cada página específica ou outra forma?
+    2. Melhor forma de lidar com Header component em diferentes páginas:
+    ...Criar um novo ou utilizar o mesmo component com condicionais?
+
+    */
     return (
         <section className='flex items-center justify-center'>
             <div className='max-w-[500px] flex flex-col gap-8'>

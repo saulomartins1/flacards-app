@@ -6,7 +6,7 @@ import createSupabaseServerClient from "@/app/lib/supabase/server";
 export async function getUserSession() {
     const supabase = await createSupabaseServerClient();
 
-    return supabase.auth.getSession();
+    return supabase.auth.getUser();
 }
 
 // Registrar com email e senha;

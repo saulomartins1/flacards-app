@@ -7,15 +7,15 @@ import { ModeToggle } from './ModeToggle'
 
 
 export async function Header() {
-    const { data: { session } } = await getUserSession();
+    const { data: { user } } = await getUserSession();
 
     return (
         <header className='flex items-center justify-around py-8 dark:bg-transparent'>
             <Link href="/">
                 <Logo />
             </Link>
-            {session && <div>
-                <p>Logged in {session.user.email} </p>
+            {user && <div>
+                <p>Logged in {user.email} </p>
                 <SignOut />
             </div>}
             <ModeToggle />

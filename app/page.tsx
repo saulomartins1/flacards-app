@@ -3,8 +3,8 @@ import { Hero } from "./components/Hero";
 import { getUserSession } from "./lib/supabase/actions";
 
 export default async function Home() {
-  const { data: { session } } = await getUserSession()
-  if (session?.user) redirect("/conta")
+  const { data: { user } } = await getUserSession()
+  if (user) redirect("/conta")
 
   return (
     <main>
