@@ -21,13 +21,12 @@ async function page() {
         <div className='flex flex-col items-center gap-4'>
             <Tabs defaultValue="access" className="w-[400px] rounded-md">
                 <TabsContent value="access">
-                    <Card className='p-5'>
+                    <Card className='p-8 flex flex-col gap-8'>
                         <FormSignIn />
+                        <LoginWithGithub />
                     </Card>
                 </TabsContent>
             </Tabs>
-
-            <LoginWithGithub />
         </div>
     </section>
 }

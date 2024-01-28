@@ -3,6 +3,8 @@
 import React from 'react'
 import { createBrowserClient } from '@supabase/ssr'
 import { Button } from '@/app/components/ui/button'
+import { GitHubLogoIcon } from "@radix-ui/react-icons"
+
 
 export function LoginWithGithub() {
 
@@ -19,5 +21,5 @@ export function LoginWithGithub() {
         })
     }
 
-    return <Button onClick={LoginWithGitHub} className="max-w-max flex self-center" >Login with GitHub</Button>
+    return <Button onClick={LoginWithGitHub} variant="link" className="max-w-max flex self-center gap-2"><GitHubLogoIcon /> Login with GitHub</Button>
 }
