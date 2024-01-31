@@ -4,7 +4,7 @@ import { getUserSession } from "./lib/supabase/actions";
 
 export default async function Home() {
   const { data: { user } } = await getUserSession()
-  if (user) redirect("/conta")
+  if (user) redirect("/me")
 
   return (
     <main>

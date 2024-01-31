@@ -17,9 +17,7 @@ export async function Header() {
             {user ?
                 <div>
                     <nav className='flex gap-4 items-center'>
-                        <a href="#" className='py-4 px-1'>Baralhos</a>
-                        <a href="#" className='py-4 px-1'>Progresso</a>
-                        <a href="#" className='py-4 px-1'>Estatísticas</a>
+                        <a href="/me" className='py-4 px-1'>Início</a>
                         <ProfileDropdown user={user} />
                     </nav>
                 </div>
