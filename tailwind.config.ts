@@ -19,6 +19,8 @@ const config = {
     },
     extend: {
       colors: {
+        title: "var(--title)",
+        text: "var(--text)",
         brand: "var(--brand)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

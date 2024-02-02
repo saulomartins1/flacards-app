@@ -48,7 +48,7 @@ export const FormSignIn = () => {
                 <p>Você receberá um link de acesso em seu e-mail <span className='font-semibold'>{ref?.current?.value}</span></p>
             </div>
             :
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="w-full">
                 <div className="flex flex-col gap-4 items-center">
                     <Label htmlFor="email">E-mail</Label>
                     <Input ref={ref} id="email" placeholder="exemplo@gmail.com" />

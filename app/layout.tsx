@@ -19,17 +19,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`relative ${inter.className} overflow-hidden`}>
+      <body className={`${inter.className} bg-stone-900 overflow-hidden h-screen`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <span className="-z-10 pointer-events-none absolute -left-32 -top-48"><BlurDetail /></span>
-          <span className="-z-10 pointer-events-none absolute -right-64 -bottom-64"><BlurDetail /></span>
-          {children}
+          <div className="flex flex-col relative my-0 mx-auto max-w-[360px] px-4 bg-background overflow-y-auto h-full text-text">
+            <Header />
+            {children}
+          </div>
+
         </ThemeProvider>
       </body>
     </html>

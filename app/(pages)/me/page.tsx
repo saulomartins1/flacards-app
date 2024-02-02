@@ -12,22 +12,20 @@ async function page() {
     if (!user) redirect("/acessar")
 
 
-    return <section className='flex items-center justify-center'>
-        <div className='flex flex-col items-center gap-4'>
-
-            <h1 className='text-4xl font-medium'>Seus Baralhos</h1>
-
-            <div className='flex items-center gap-4'>
-                <p className='font-bold'>2 Baralhos</p>
-                <Button className='flex items-center gap-2'><PlusCircleIcon /> Adicionar</Button>
+    return <section className='flex items-center justify-center mt-16'>
+        <div className='flex flex-col items-center gap-6'>
+            <h1 className='text-3xl font-bold'>Meus Baralhos</h1>
+            <div className='flex flex-col items-center gap-8'>
+                <div className='flex gap-5 items-center'>
+                    <p><span className='font-semibold text-2xl mr-3'>02</span> baralhos</p>
+                    <p><span className='font-semibold text-2xl mr-3'>66</span> cards</p>
+                </div>
+                <Button className='flex font-semibold items-center gap-2'><PlusCircleIcon /> Criar Baralho</Button>
             </div>
 
-            <div className='flex flex-col justify-center items-center gap-4'>
+            {/* <div className='flex flex-col justify-center items-center gap-4'>
                 <Deck />
-                <Deck />
-                <Deck />
-                <Deck />
-            </div>
+            </div> */}
         </div>
     </section>
 }
