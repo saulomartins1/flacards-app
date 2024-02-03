@@ -14,6 +14,6 @@ export function SignOut() {
 
     }
     return <form action={handleSignOut}>
-        <button className='p-3 font-bold transition-colors hover:bg-red-100 rounded-full'><ExitIcon strokeWidth="8" color='red' /></button>
+        <button className='flex justify-between items-center gap-4 p-2 transition-colors rounded-sm w-full'>Sair <ExitIcon strokeWidth="8" color='red' /></button>
     </form>
 }
