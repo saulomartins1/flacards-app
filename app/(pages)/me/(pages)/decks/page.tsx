@@ -1,9 +1,8 @@
-import { Button } from "@/app/components/ui/button";
 import { getUserSession } from "@/app/lib/supabase/actions";
-import { PlusCircleIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import React from "react";
-import { Deck } from "../../components/Deck";
+import { Deck } from "../../_components/Deck";
+import { CreateDeckModal } from "./_components/Create-Deck-Modal";
 
 async function page() {
   const {
@@ -27,10 +26,10 @@ async function page() {
               </p>
             </div>
           </div>
-          <Button className="flex font-semibold items-center gap-2">
-            <PlusCircleIcon /> Criar Baralho
-          </Button>
+
+          <CreateDeckModal />
         </div>
+
         <div className="flex flex-col justify-center items-center gap-4">
           <Deck />
           <Deck />
