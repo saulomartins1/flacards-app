@@ -11,6 +11,34 @@ datasource db {
 }
 
 model User {
-  id   String @id @default(uuid())
-  name String
+  id    Int     @id @default(autoincrement())
+  name  String
+  email String  @unique
+  decks Deck[]
+}
+
+
+model Deck {
+  id     Int     @id @default(autoincrement())
+  name   String
+  userId Int
+  user   User    @relation(fields: [userId], references: [id])
+  cards  Card[]
+}
+
+model Card {
+  id         Int    @id @default(autoincrement())
+  question   String
+  answer     String
+  deckId     Int
+  deck       Deck   @relation(fields: [deckId], references: [id])
+  difficulty     Difficulty
+  lastReviewedAt DateTime?
+}
+
+enum Difficulty {
+  FORGOT
+  PARTIAL
+  RECALLED
+  EASY
 }
