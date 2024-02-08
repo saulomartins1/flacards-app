@@ -1,17 +1,30 @@
+"use client";
+
 import React from "react";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/app/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/app/components/ui/dialog";
 
 import { PlusCircleIcon } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { Label } from "@/app/components/ui/label";
+import { saveDeck } from "@/app/(pages)/actions/save-deck";
+import { getUserSession } from "@/app/lib/supabase/actions";
 
 export function CreateDeckModal() {
+
+  const handleCreateDeck = async () => {
+    
+    try {
+      const { data: { user } } = await getUserSession();
+      console.log(user?.id)
+      // await saveDeck({ name: "Primeiro Deck", userId: 20, });
+      console.log("Create Deck");
+    } catch (error) {
+      
+    }
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -26,14 +39,9 @@ export function CreateDeckModal() {
             <Label htmlFor="name" className="text-sm font-semibold">
               Nome do Baralho
             </Label>
-            <Input
-              autoComplete="off"
-              id="name"
-              type="text"
-              contentEditable="plaintext-only"
-            />
+            <Input autoComplete="off" id="name" type="text" contentEditable="plaintext-only" />
           </div>
-          <Button className="max-w-max" type="submit">
+          <Button onClick={handleCreateDeck} className="max-w-max">
             Criar
           </Button>
         </div>
