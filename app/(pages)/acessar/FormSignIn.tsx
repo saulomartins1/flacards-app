@@ -5,16 +5,12 @@ import { Input } from "@/app/components/ui/input";
 import { Label } from "@/app/components/ui/label";
 import { Button } from "@/app/components/ui/button";
 import { useRef } from "react";
-import { createBrowserClient } from "@supabase/ssr";
 
 export const FormSignIn = () => {
   const [sent, setSent] = React.useState<Boolean>(false);
   const ref = useRef<HTMLInputElement | null>(null);
 
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
+ 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,22 +19,22 @@ export const FormSignIn = () => {
     if (email && email.value.includes("@") && email.value.length > 10) {
       // Trocar para RegEx depois/
 
-      const { data: DataUser, error } = await supabase.auth.signInWithOtp({
-        email: email.value,
-        options: {
-          shouldCreateUser: true,
-          emailRedirectTo: `${location.origin}/api/auth/callback`,
-        },
-      });
+      // const { data: DataUser, error } = await supabase.auth.signInWithOtp({
+      //   email: email.value,
+      //   options: {
+      //     shouldCreateUser: true,
+      //     emailRedirectTo: `${location.origin}/api/auth/callback`,
+      //   },
+      // });
 
-      if (error) {
-        setSent(false);
-        console.log(error.message);
-      }
-      if (!error && DataUser) {
-        console.log("Enviado");
-        setSent(true);
-      }
+      // if (error) {
+      //   setSent(false);
+      //   console.log(error.message);
+      // }
+      // if (!error && DataUser) {
+      //   console.log("Enviado");
+      //   setSent(true);
+      // }
     } else {
       alert("Utilize um email válido!");
     }

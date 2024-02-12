@@ -2,15 +2,13 @@ import React from 'react'
 import { Tabs, TabsContent } from '@/app/components/ui/tabs'
 import { Card } from "@/app/components/ui/card"
 
-import { LoginWithGithub } from '@/app/components/authComponents/LoginWithGithub'
 import { redirect } from 'next/navigation'
-import { getUserSession } from '@/app/lib/supabase/actions'
 import { FormSignIn } from './FormSignIn'
+import { LoginWithGithub } from '@/app/components/authComponents/LoginWithGithub'
 
 async function page() {
 
-    const { data: { user } } = await getUserSession()
-    if (user) redirect("/conta")
+    // if (user) redirect("/conta")
 
 
     return <section className='h-screen mt-16 flex flex-col items-center gap-8'>

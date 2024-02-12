@@ -2,7 +2,6 @@ import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { Logo } from "../assets/Logo";
-import { getUserSession } from "../lib/supabase/actions";
 import {
   Avatar,
   AvatarFallback,
@@ -16,14 +15,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/app/components/ui/dropdown-menu";
-import { SignOut } from "./authComponents/SignOut";
 
 export async function Header() {
-  const {
-    data: { user },
-  } = await getUserSession();
-  const userAvatar = user?.user_metadata?.avatar_url;
-  const userEmailFormatted = user?.email?.slice(0, user.email.indexOf("@"));
+
+  const user = false;
+  const userAvatar = "1";
+  // const userAvatar = user?.user_metadata?.avatar_url;
+  // const userEmailFormatted = user?.email?.slice(0, user.email.indexOf("@"));
 
   return (
     <header className="flex items-center justify-between py-4 dark:bg-transparent ">
@@ -44,7 +42,7 @@ export async function Header() {
                 <MenuIcon />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="min-w-[250px] mr-4 dark:bg-card shadow-2xl shadow-black">
-                <DropdownMenuLabel>{userEmailFormatted}</DropdownMenuLabel>
+                <DropdownMenuLabel>userEmailFormatted</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <nav className="flex flex-col">
                   <Link
@@ -74,7 +72,7 @@ export async function Header() {
                 </nav>
                 <DropdownMenuSeparator />
                 <span>
-                  <SignOut />
+                  {/* <SignOut /> */}
                 </span>
               </DropdownMenuContent>
             </DropdownMenu>
