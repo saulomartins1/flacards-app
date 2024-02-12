@@ -1,15 +1,11 @@
-import { getUserSession } from "@/app/lib/supabase/actions";
 import { redirect } from "next/navigation";
 import React from "react";
 import { Deck } from "../../_components/Deck";
 import { CreateDeckModal } from "./_components/Create-Deck-Modal";
 
 async function page() {
-  const {
-    data: { user },
-  } = await getUserSession();
-
-  if (!user) redirect("/acessar");
+  
+  // if (!user) redirect("/acessar");
 
   return (
     <section className="flex items-center justify-center mt-16">

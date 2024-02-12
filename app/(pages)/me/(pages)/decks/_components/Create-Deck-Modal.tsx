@@ -8,16 +8,12 @@ import { PlusCircleIcon } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { Label } from "@/app/components/ui/label";
-import { saveDeck } from "@/app/(pages)/actions/save-deck";
-import { getUserSession } from "@/app/lib/supabase/actions";
 
 export function CreateDeckModal() {
 
   const handleCreateDeck = async () => {
     
     try {
-      const { data: { user } } = await getUserSession();
-      console.log(user?.id)
       // await saveDeck({ name: "Primeiro Deck", userId: 20, });
       console.log("Create Deck");
     } catch (error) {

@@ -4,7 +4,7 @@ import { Card } from "@/app/components/ui/card"
 
 import { redirect } from 'next/navigation'
 import { FormSignIn } from './FormSignIn'
-import { LoginWithGithub } from '@/app/components/authComponents/LoginWithGithub'
+import { LoginWithGoogle } from '@/app/components/authComponents/LoginWithGoogle'
 
 async function page() {
 
@@ -20,8 +20,8 @@ async function page() {
             <Tabs defaultValue="access" className="rounded-md">
                 <TabsContent value="access">
                     <Card className='p-8 flex flex-col gap-8'>
-                        <FormSignIn />
-                        <LoginWithGithub />
+                        {/* <FormSignIn /> */}
+                        <LoginWithGoogle />
                     </Card>
                 </TabsContent>
             </Tabs>

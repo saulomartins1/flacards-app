@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "./components/Header";
-import { ThemeProvider } from "@/app/components/theme-provider"
+import { ThemeProvider } from "@/app/providers/theme-provider"
 import "./globals.css";
+import AuthProvider from "./providers/auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <AuthProvider>
       <body className={`${inter.className} dark:bg-background`}>
         <div className="m-4">
           <ThemeProvider
@@ -31,6 +33,7 @@ export default function RootLayout({
           </ThemeProvider>
         </div>
       </body>
+      </AuthProvider>
     </html>
   );
 }

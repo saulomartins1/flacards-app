@@ -1,5 +1,4 @@
 import { Button } from '@/app/components/ui/button';
-import { getUserSession } from '@/app/lib/supabase/actions'
 import { ChevronRight, PlayCircleIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,11 +6,6 @@ import { redirect } from 'next/navigation';
 import React from 'react'
 
 async function page() {
-
-    const { data: { user } } = await getUserSession();
-
-    if (!user) redirect("/acessar")
-
 
     return <section className='flex items-center justify-center mt-16'>
         <div className='flex flex-col items-center gap-16'>

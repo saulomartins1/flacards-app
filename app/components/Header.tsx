@@ -1,3 +1,4 @@
+"use client"
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -15,20 +16,19 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/app/components/ui/dropdown-menu";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
-export async function Header() {
+export function Header() {
 
-  const user = false;
-  const userAvatar = "1";
-  // const userAvatar = user?.user_metadata?.avatar_url;
-  // const userEmailFormatted = user?.email?.slice(0, user.email.indexOf("@"));
+  const {data} = useSession();
 
   return (
     <header className="flex items-center justify-between py-4 dark:bg-transparent ">
-      {user ? (
+      {data?.user ? (
         <div className="flex items-center justify-between w-full">
           <Avatar>
-            <AvatarImage src={userAvatar} />
+            <AvatarImage src={data?.user?.image || ""} />
             <AvatarFallback>FC</AvatarFallback>
           </Avatar>
 
@@ -42,7 +42,7 @@ export async function Header() {
                 <MenuIcon />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="min-w-[250px] mr-4 dark:bg-card shadow-2xl shadow-black">
-                <DropdownMenuLabel>userEmailFormatted</DropdownMenuLabel>
+                <DropdownMenuLabel>{data?.user?.name}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <nav className="flex flex-col">
                   <Link
