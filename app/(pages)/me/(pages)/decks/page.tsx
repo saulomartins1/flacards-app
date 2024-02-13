@@ -1,10 +1,13 @@
+import { authOptions } from '@/app/lib/auth';
+import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React from 'react';
 import { Deck } from '../../_components/Deck';
 import { CreateDeckModal } from './_components/Create-Deck-Modal';
 
 async function page() {
-    // if (!user) redirect("/acessar");
+    const session = await getServerSession(authOptions);
+    if(!session?.user) redirect("/acessar");
 
     return (
         <section className="flex items-center justify-center mt-16">

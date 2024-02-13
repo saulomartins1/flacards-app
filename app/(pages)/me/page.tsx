@@ -1,11 +1,16 @@
 import { Button } from '@/app/components/ui/button';
+import { authOptions } from '@/app/lib/auth';
 import { ChevronRight, PlayCircleIcon } from 'lucide-react';
+import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
 async function page() {
+    const session = await getServerSession(authOptions);
+    if(!session?.user) redirect("/acessar");
+
     return (
         <section className="flex items-center justify-center mt-16">
             <div className="flex flex-col items-center gap-16">

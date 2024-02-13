@@ -3,13 +3,8 @@ import { ExitIcon } from '@radix-ui/react-icons';
 import { signOut } from 'next-auth/react';
 
 export function SignOutButton() {
-    const handleSignOut = async () => {
-        try {
-            await signOut();
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    
+    const handleSignOut = async () => signOut({redirect: true, callbackUrl: "/"});
 
     return (
         <form action={handleSignOut}>

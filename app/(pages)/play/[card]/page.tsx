@@ -1,8 +1,11 @@
+import { authOptions } from '@/app/lib/auth';
+import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
 async function page({ params }: { params: { card: string } }) {
-    // if (!user) redirect("/acessar")
+    const session = await getServerSession(authOptions);
+    if(session?.user) redirect("/acessar");
 
     return (
         <section className="flex items-center justify-center">

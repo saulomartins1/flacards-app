@@ -2,14 +2,15 @@ import React from 'react'
 import { Tabs, TabsContent } from '@/app/components/ui/tabs'
 import { Card } from "@/app/components/ui/card"
 
-import { redirect } from 'next/navigation'
 import { FormSignIn } from './FormSignIn'
-import { LoginWithGoogle } from '@/app/components/authComponents/LoginWithGoogle'
+import { LoginWithGoogle } from '@/app/components/authComponents/sign-in-google'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/app/lib/auth'
+import { redirect } from 'next/navigation'
 
 async function page() {
-
-    // if (user) redirect("/conta")
-
+    const session = await getServerSession(authOptions);
+    if(session?.user) redirect("/me");
 
     return <section className='h-screen mt-16 flex flex-col items-center gap-8'>
         <div>
@@ -20,7 +21,7 @@ async function page() {
             <Tabs defaultValue="access" className="rounded-md">
                 <TabsContent value="access">
                     <Card className='p-8 flex flex-col gap-8'>
-                        {/* <FormSignIn /> */}
+                        <FormSignIn />
                         <LoginWithGoogle />
                     </Card>
                 </TabsContent>
