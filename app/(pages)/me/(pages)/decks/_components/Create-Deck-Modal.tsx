@@ -12,17 +12,19 @@ import { PlusCircleIcon } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { Input } from '@/app/components/ui/input';
 import { Label } from '@/app/components/ui/label';
-// import { saveDeck } from '@/app/(pages)/actions/save-deck';
+import { saveDeck } from '@/app/(pages)/actions/create-deck';
 import { useSession } from 'next-auth/react';
 
 export function CreateDeckModal() {
     const { data } = useSession();
-
+    
     const handleCreateDeck = async () => {
         try {
-            // await saveDeck({ name: "Primeiro Deck", userId: data?.user?.id, });
+            await saveDeck({ name: "Primeiro Deck", userId: (data?.user as any).id, });
             console.log('Create Deck');
-        } catch (error) {}
+        } catch (error) {
+            alert("Houve um erro, tente novamente!");
+        }
     };
 
     return (

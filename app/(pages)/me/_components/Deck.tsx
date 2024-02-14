@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/app/components/ui/button";
+import { Prisma } from "@prisma/client";
 import {
   GalleryHorizontalEnd,
   //   Trash2,
@@ -9,7 +10,15 @@ import {
 import Link from "next/link";
 import React from "react";
 
-export function Deck() {
+interface IDeckProps {
+  deck: Prisma.DeckGetPayload<{
+    include: {cards: Prisma.Deck$cardsArgs}
+  }>;
+}
+
+
+export function Deck({deck}: IDeckProps) {
+
   const handleEditDeck = () => {
     alert("Edit Deck");
   };
@@ -22,7 +31,7 @@ export function Deck() {
     <article className="w-full flex-wrap flex items-center bg-card gap-16 p-5 rounded-md border border-border">
       <div className="flex items-center w-full justify-between">
         <h2 className="truncate max-w-64">
-          JavaScript Conceitos Lorem ipsum dolor sit amet.
+          {deck.name}
         </h2>
         <button onClick={handleEditDeck}>
           <Edit />
@@ -30,17 +39,13 @@ export function Deck() {
       </div>
       <div className="w-full flex justify-between items-center gap-8">
         <span className="flex items-center gap-2" title="Cards neste baralho">
-          <GalleryHorizontalEnd />2
+          <GalleryHorizontalEnd />{deck.cards.length}
         </span>
         <Link href="/me/decks">
           <Button className="flex font-semibold items-center gap-2 bg-brand">
             <PlayCircleIcon /> Jogar
           </Button>
         </Link>
-
-        {/* <button onClick={handleDeleteDeck}>
-          <Trash2 />{" "}
-        </button> */}
       </div>
     </article>
   );
